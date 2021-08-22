@@ -1,18 +1,16 @@
 import logging
 import os
-from typing import List, Tuple
 
-from fileorganizer.action import Action
+from fileorganizer.actionrunner import ActionRunner
 from fileorganizer.file import File
-from fileorganizer.rule import Rule
 
 
 class FolderScanner():
 
-    def __init__(self, folder_path, rule_to_action: List[Tuple[Rule, Action]]) -> None:
+    def __init__(self, folder_path, action_runner: ActionRunner) -> None:
         super().__init__()
         self.__folder_path = os.path.expanduser(folder_path)
-        self.__rule_to_action = rule_to_action
+        self.__action_runner = action_runner
 
     def scan(self):
         files = [File(self.__folder_path, f) for f in os.listdir(self.__folder_path) if
@@ -22,8 +20,4 @@ class FolderScanner():
 
     def __organize(self, file: File):
         logging.debug(f"process {file.abs_path}")
-        for rule_action in self.__rule_to_action:
-            rule = rule_action[0]
-            action = rule_action[1]
-            if rule.eval(file):
-                action.do(file)
+        self.__action_runner.eval(file)
