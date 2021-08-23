@@ -1,0 +1,4 @@
+docutils==0.17.1
+lockfile==0.12.2
+python-daemon==2.3.0
+watchdog==2.1.4
