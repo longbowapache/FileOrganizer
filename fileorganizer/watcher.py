@@ -33,7 +33,7 @@ class Watcher:
                             datefmt='%Y-%m-%d %H:%M:%S')
         logging.info(f"start to watch {self.__directory}")
         observer = Observer()
-        observer.schedule(self.__event_handler, self.__directory, recursive=True)
+        observer.schedule(self.__event_handler, self.__directory, recursive=False)
         observer.start()
         try:
             while True:

@@ -32,3 +32,8 @@ class MoveTo(Action):
                 osx_notify('Error Occurs', f'{e}')
         else:
             raise RuntimeError(f'{dst_dir} is not a valid directory')
+
+    def __str__(self) -> str:
+        return f'MoveTo {self.__destination}'
+
+

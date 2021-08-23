@@ -19,3 +19,8 @@ class File():
     @property
     def enclosing_dir(self):
         return self.__folder
+
+    def __str__(self) -> str:
+        return self.abs_path
+
+

@@ -1,3 +1,4 @@
+import logging
 from typing import List, Tuple
 
 from fileorganizer.action import Action
@@ -16,3 +17,4 @@ class ActionRunner():
             action = rule_action[1]
             if rule.eval(file):
                 action.do(file)
+                logging.info(f'perform {action} on file {file}')
