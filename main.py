@@ -10,10 +10,16 @@ from fileorganizer.rule import ExtensionRule
 from fileorganizer.watcher import Watcher
 
 __action_runner = ActionRunner(
-    [(ExtensionRule('html'), MoveTo('HTML文件')), (ExtensionRule('zip 7z gzip rar tar gz'), MoveTo('压缩包')),
-     (ExtensionRule('doc docx xls xlsx ppt pptx csv'), MoveTo('Office文档')), (ExtensionRule('pdf'), MoveTo('PDF文档')),
-     (ExtensionRule('jpg png'), MoveTo('图片')), (ExtensionRule('sh'), MoveTo('可执行脚本')),
-     (ExtensionRule('txt'), MoveTo('文本文件')), ])
+    [
+        (ExtensionRule('html'), MoveTo('HTML文件')), (ExtensionRule('zip 7z gzip rar tar gz'), MoveTo('Archives')),
+        (ExtensionRule('doc docx xls xlsx ppt pptx csv'), MoveTo('Office')),
+        (ExtensionRule('pdf'), MoveTo('PDF')),
+        (ExtensionRule('jpg jpeg png'), MoveTo('Pictures')),
+        (ExtensionRule('sh'), MoveTo('Scripts')),
+        (ExtensionRule('txt'), MoveTo('Text')),
+        (ExtensionRule('dmg iso img'), MoveTo('Disk Images')),
+    ]
+)
 
 
 def start_watcher(watch_path):
