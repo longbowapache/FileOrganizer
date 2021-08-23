@@ -13,7 +13,7 @@ class File():
         return os.path.join(self.__folder, self.__filename)
 
     @property
-    def extension(self):
+    def extension(self) -> str:
         return pathlib.Path(self.abs_path).suffix[1:]
 
     @property
